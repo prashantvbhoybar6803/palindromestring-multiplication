@@ -10,33 +10,22 @@ module Methods
         end
         puts "Multiplication is: #{multiplication}"
     end
-end    
-    
-class CallMethods
-    # When use extend we can access methods from moduledirectly without instantiating a class.
-    extend Methods 
 
-    #  When use include we need to create a new object for a class and then we can access methods from module.
-    include Methods
-end
+    def is_palindrome(string)
+        # If case insensitive palindrome checking uncomment below line
+        # string.downcase! 
+        reversed = ""
+        count = string.length
 
+        while count > 0
+            count -= 1
+            reversed += string[count]
+        end
 
-print "Enter number1 = ";
-num1 = gets.chomp; #gets input from user
-
-print "Enter number2 = ";
-num2 = gets.chomp; 
-
-#checks input from user is valid/invalid
-
-if num1 == '' || num2 == ''
-    puts "Invalid input"
-else
-    if num1.scan(/\D/).empty? && num2.scan(/\D/).empty? 
-        CallMethods.multiply(num1.to_i,num2.to_i)
-    else
-        puts "Invalid number input"
+        if string == reversed
+            puts "#{string} is a palindrom."
+        else
+            puts "#{string} is not a palindrom."
+        end
     end
-end
-
-
+end  
